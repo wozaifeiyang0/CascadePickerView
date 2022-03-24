@@ -8,6 +8,8 @@ import android.view.WindowManager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import space.tanghy.cascade.lib.R
 import space.tanghy.cascade.lib.utils.ScreenUtil
 
@@ -95,6 +97,11 @@ open class CascadePickerView(context: Context) : Dialog(context, R.style.dialogT
      */
     fun setSearchChildren(searchChildren: ((Item) -> MutableList<Item>)? = null) {
         this.searchChildren = searchChildren
+    }
+
+    fun setData(dataJson: String) {
+        val dataList = Gson().fromJson<MutableList<Item>>(dataJson, object : TypeToken<MutableList<Item>>() {}.type)
+       setData(dataList)
     }
 
     fun setData(

@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.widget.AppCompatTextView
-import space.tanghy.cascade.lib.dialog.CityPickerView
+import space.tanghy.cascade.lib.dialog.CascadePickerView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,27 +12,56 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val showDialogBtn = findViewById<Button>(R.id.showDialogBtn)
         val showDialogTxt = findViewById<AppCompatTextView>(R.id.showDialogTxt)
-//        val dialog = CascadePickerView(
-//            this,
-//            mutableListOf(
-//                Item(
-//                    "北京", "北京", mutableListOf(
-//                        Item("朝阳区", "朝阳区"),
-//                        Item("东城区", "东城区"),
-//                        Item("西城区", "西城区"),
-//                    )
-//                ),
-//                Item("天津市", "天津市"),
-//                Item("河北省", "河北省"),
-//                Item("山西省", "山西省"),
-//                Item("内蒙古", "内蒙古"),
-//                Item("辽宁省", "辽宁省"),
-//                Item("吉林省", "吉林省"),
-//                Item("黑龙江省", "黑龙江省"),
-//                Item("上海市", "上海市"),
-//            )
-//        )
-        val dialog = CityPickerView(this)
+        val dialog = CascadePickerView(
+            this,
+        )
+        dialog.setData("[\n" +
+                "  {\n" +
+                "    \"value\": \"1401\",\n" +
+                "    \"name\": \"太原市\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"value\": \"1402\",\n" +
+                "    \"name\": \"大同市\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"value\": \"1403\",\n" +
+                "    \"name\": \"阳泉市\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"value\": \"1404\",\n" +
+                "    \"name\": \"长治市\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"value\": \"1405\",\n" +
+                "    \"name\": \"晋城市\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"value\": \"1406\",\n" +
+                "    \"name\": \"朔州市\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"value\": \"1407\",\n" +
+                "    \"name\": \"晋中市\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"value\": \"1408\",\n" +
+                "    \"name\": \"运城市\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"value\": \"1409\",\n" +
+                "    \"name\": \"忻州市\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"value\": \"1410\",\n" +
+                "    \"name\": \"临汾市\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"value\": \"1411\",\n" +
+                "    \"name\": \"吕梁市\"\n" +
+                "  }\n" +
+                "]")
+//        val dialog = CityPickerView(this)
 
         dialog.lastItemCloseDialog = false
 
