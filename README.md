@@ -2,6 +2,11 @@
 ## 级联选择组件,包括*基础组件*和*城市选择组件*
 > 目前公开的记录组件基本都有限制，限制选择级别，如很多城市组件只能选择三级：省、市、县   
 > 本组件不限制级别，可无极显示，只要按照要求组织数据即可   
+
+## 引用方式
+```groovy
+    implementation 'space.tanghy:cascade:0.0.2'
+```
 ## 数据格式
 ````json
 [
@@ -94,7 +99,5 @@ dialog.setData("[\n" +
 ## 组件默认实现城市选择器
 > 目前数据只处理到市级，数据是国家统计局发布的区划数据2021版，区划数据需要解析下载后续将更新区划选择到村一级别   
 
-<img src="http://82.157.109.86/images/1.png" alt="图片2" width="313" height="656">
-
-<img src="http://82.157.109.86/images/2.png" alt="图片2" width="313" height="656">
+<img src="http://82.157.109.86/images/1.png" alt="图片2" width="313" height="656"> <img src="http://82.157.109.86/images/2.png" alt="图片2" width="313" height="656">
 
