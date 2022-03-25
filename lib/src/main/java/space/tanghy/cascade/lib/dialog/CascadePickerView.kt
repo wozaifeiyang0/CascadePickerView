@@ -28,6 +28,7 @@ open class CascadePickerView(context: Context) : Dialog(context, R.style.dialogT
     private var selectLastListener: ((TabItem, List<Item>) -> Unit)? = null
     private var selectItemListener: ((TabItem) -> Unit)? = null
     private var searchChildren: ((Item) -> MutableList<Item>)? = null
+    private var displayLevel: Int = Int.MAX_VALUE
 
     // 已经选择的数据
     var selectItems: List<Item>? = null
@@ -100,8 +101,11 @@ open class CascadePickerView(context: Context) : Dialog(context, R.style.dialogT
     }
 
     fun setData(dataJson: String) {
-        val dataList = Gson().fromJson<MutableList<Item>>(dataJson, object : TypeToken<MutableList<Item>>() {}.type)
-       setData(dataList)
+        val dataList = Gson().fromJson<MutableList<Item>>(
+            dataJson,
+            object : TypeToken<MutableList<Item>>() {}.type
+        )
+        setData(dataList)
     }
 
     fun setData(
@@ -113,21 +117,9 @@ open class CascadePickerView(context: Context) : Dialog(context, R.style.dialogT
             tabLayout?.removeAllTabs()
             tabData.clear()
             tabData.add(TabItem("请选择", data))
-            val adapter = CascadeAdapter(tabData, searchChildren) { tabItem, b, i ->
-                // b 代表是否创建了新的tab页，如果是，i代表位置
-                selectItems =
-                    tabData.filter { it.currentItem != null }.map { it.currentItem!! }.toList()
-                // 选择item的监听
-                selectItemListener?.invoke(tabItem)
-                if (b) {
-                    // 跳转到新页面上
-                    viewPager?.setCurrentItem(i, true)
-                } else {
-                    // 最终结果监听
-                    selectLastListener?.invoke(tabItem, selectItems!!)
-                    if (lastItemCloseDialog)
-                        hide()
-                }
+            val adapter = CascadeAdapter(tabData) { tabItem ->
+                val tabIndex = changeTabItem(tabItem)
+                handlerOnClick(tabItem, tabIndex)
             }
             viewPager?.adapter = adapter
             // 管理tab和viewPager
@@ -136,6 +128,78 @@ open class CascadePickerView(context: Context) : Dialog(context, R.style.dialogT
             }.attach()
         }
         return this
+    }
+
+    /**
+     * 设置级联显示级别
+     */
+    fun setLevel(level: Int) {
+        this.displayLevel = level
+    }
+
+    private fun handlerOnClick(tabItem: TabItem, tabIndex: Int) {
+        //  tabIndex大于-1，代表是否创建了新的tab页，如果是，tabIndex代表位置
+        selectItems =
+            tabData.filter { it.currentItem != null }.map { it.currentItem!! }.toList()
+        // 选择item的监听
+        selectItemListener?.invoke(tabItem)
+        if (tabIndex > -1) {
+            // 跳转到新页面上
+            viewPager?.setCurrentItem(tabIndex, true)
+        } else {
+            // 最终结果监听
+            selectLastListener?.invoke(tabItem, selectItems!!)
+            if (lastItemCloseDialog)
+                hide()
+        }
+    }
+
+    /**
+     * 点击选项切换tab的处理方法
+     */
+    private fun changeTabItem(tabItem: TabItem): Int {
+        // 当前选择的列表
+        val currentItem = tabItem.currentItem
+        // 更改列表名称
+        tabItem.name = currentItem!!.name
+        // 清理该位置后面的所有数据
+        val toMutableList = tabData.filter {
+            it.index <= tabItem.index
+        }.toMutableList()
+        // 原数据的长度
+        val oldLen = tabData.size
+        tabData.clear()
+        tabData.addAll(toMutableList)
+        // 关键代码当数据变化时刷新adapter
+        viewPager?.adapter?.notifyItemRangeRemoved(tabItem.index + 1, oldLen - tabData.size)
+
+        var tabIndex: Int = -1
+        if (currentItem.children != null && tabData.size < displayLevel) {
+            tabIndex = tabData.size
+            tabData.add(
+                TabItem(
+                    index = tabData.size,
+                    data = currentItem.children
+                ),
+            )
+
+        } else if (searchChildren != null && tabData.size < displayLevel) {
+            val list = searchChildren!!.invoke(currentItem)
+            if (list.isNotEmpty()) {
+                tabIndex = tabData.size
+                tabData.add(
+                    TabItem(
+                        index = tabData.size,
+                        data = list
+                    ),
+                )
+            }
+        }
+
+        if (tabIndex > -1)
+            viewPager?.adapter?.notifyItemChanged(tabIndex)
+
+        return tabIndex
     }
 
 

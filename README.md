@@ -8,11 +8,29 @@
     implementation 'space.tanghy:cascade:0.0.2'
 ```
 ## 组件默认实现城市选择器
-> 目前数据只处理到市级，数据是国家统计局发布的区划数据2021版，区划数据需要解析下载后续将更新区划选择到村一级别   
-> 国家统计局区划地址：http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2021/index.html
+> 行政区划数据是国家统计局发布的区划数据2021版，区划数据需要解析下载后续将更新区划升级api   
+> 国家统计局区划地址：http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2021/index.html   
+> 行政区划数据量：61万多
+
+### 城市级别
+- 省级
+- 市级
+- 县级
+- 乡镇级
+- 村级
 
 <img src="http://82.157.109.86/images/1.png" alt="图片2" width="313" height="656"> <img src="http://82.157.109.86/images/2.png" alt="图片2" width="313" height="656">
 
+> 组件提供级别设置可根据需求设置显示级别
+
+```kotlin
+ setLevel()
+```
+> 组件默认到最后一级关闭级联选择框，可通过设置属性不关闭
+
+```kotlin
+lastItemCloseDialog = false
+```
 ## 数据格式
 ````json
 [
@@ -103,3 +121,10 @@ dialog.setData("[\n" +
         "]")
 ````
 
+## searchChildren 动态指定数据源
+> 该方法返回的数据需要跟框架指定的格式一致，数据将动态赋给下一级节点
+
+## 0.0.3版本
+- 更新行政区划数据到村（后续可能考虑删除，村一级数据过大导致打包、上传或者使用都不方便）   
+- 更新级联选择组件可传入json字符串为数据      
+- 区划数据已经拆分，有需要原数据的可以留言。

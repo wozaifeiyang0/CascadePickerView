@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
  */
 class CascadeAdapter(
     private val dataSet: MutableList<TabItem>,
-    private var searchChildren:((Item)-> MutableList<Item>)? = null,
-    private val callback: (TabItem, Boolean, Int) -> Unit
+    private val callback: (TabItem) -> Unit
 ) :
     RecyclerView.Adapter<CascadeAdapter.CascadeHolder>() {
 
@@ -27,40 +26,7 @@ class CascadeAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CascadeHolder {
         return CascadeHolder(CardView(LayoutInflater.from(parent.context), parent) { tabItem ->
-            // 当前选择的列表
-            val currentItem = tabItem.currentItem
-            // 更改列表名称
-            tabItem.name = currentItem!!.name
-            // 清理该位置后面的所有数据
-            val toMutableList = dataSet.filter {
-                it.index <= tabItem.index
-            }.toMutableList()
-            dataSet.clear()
-            dataSet.addAll(toMutableList)
-            var tabIndex: Int = -1
-            if (currentItem.children != null) {
-                tabIndex = dataSet.size
-                dataSet.add(
-                    TabItem(
-                        index = dataSet.size,
-                        data = currentItem.children
-                    ),
-                )
-
-            }else if (searchChildren != null) {
-                val list = searchChildren!!.invoke(currentItem)
-                if (list.isNotEmpty()) {
-                    tabIndex = dataSet.size
-                    dataSet.add(
-                        TabItem(
-                            index = dataSet.size,
-                            data = list
-                        ),
-                    )
-                }
-            }
-            notifyItemChanged(tabIndex)
-            callback.invoke(tabItem, tabIndex > -1, tabIndex)
+            callback.invoke(tabItem)
         })
     }
 

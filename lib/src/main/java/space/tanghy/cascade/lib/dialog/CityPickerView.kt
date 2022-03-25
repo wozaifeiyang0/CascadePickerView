@@ -21,6 +21,11 @@ class CityPickerView(context: Context):CascadePickerView(context) {
         setData(parseJsonFile("province"))
     }
 
+    constructor(context: Context, level: Int) : this(context){
+        setLevel(level)
+    }
+
+
     fun parseJsonFile(fileName: String): MutableList<Item>{
         return try {
             val input = context.assets.open("${fileName}.json")
