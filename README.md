@@ -130,7 +130,7 @@ dialog.setData("[\n" +
     dialog.show()
 ```
 <img src="http://82.157.109.86/images/1.png" alt="图片2" width="313" height="656"> <img src="http://82.157.109.86/images/2.png" alt="图片2" width="313" height="656">
-<img src="http://82.157.109.86/images/3.png" alt="图片2" width="313" height="656">
+<img src="http://82.157.109.86/images/3.gif" alt="图片2" width="313" height="656">
 ## 0.0.3版本
 - 更新行政区划数据到村（后续可能考虑删除，村一级数据过大导致打包、上传或者使用都不方便）   
 - 更新级联选择组件可传入json字符串为数据      
