@@ -14,7 +14,8 @@ import space.tanghy.cascade.lib.R
  */
 class ItemAdapter(var dataSet: MutableList<Item>, private val callback: (Item) -> Unit) :
     RecyclerView.Adapter<ItemAdapter.ItemHolder>() {
-    var currentItemView:ItemView? = null
+
+    var currentItem:SelectItem? = null
 
     class ItemHolder internal constructor(val cascadeView: ItemView) :
         RecyclerView.ViewHolder(cascadeView.view) {
@@ -33,14 +34,24 @@ class ItemAdapter(var dataSet: MutableList<Item>, private val callback: (Item) -
         holder.bind(dataSet[position])
         val cascadeView = holder.cascadeView
         cascadeView.view.setOnClickListener {
-            cascadeView.check()
-            currentItemView?.check()
-            currentItemView = cascadeView
+            if (currentItem != null) {
+                currentItem!!.item.isCheck = false
+                notifyItemChanged(currentItem!!.index)
+            }
+            currentItem = SelectItem(dataSet[position],position)
+            currentItem!!.item.isCheck = true
+            notifyItemChanged(position)
             callback.invoke(dataSet[position])
         }
     }
 
     override fun getItemCount() = dataSet.size
+
+
+    data class SelectItem(
+        var item:Item,
+        var index:Int
+    )
 
 
 }
