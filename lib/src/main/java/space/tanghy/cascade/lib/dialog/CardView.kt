@@ -19,7 +19,7 @@ class CardView(
     private val callback: (TabItem) -> Unit
 ) {
 
-    val view: View = layoutInflater.inflate(R.layout.dialog_content_layout, container, false)
+    val view: View = layoutInflater.inflate(R.layout.tanghy_view_cascade_dialog_content_layout, container, false)
     var tabItem: TabItem? = null
 
     private val recyclerView: RecyclerView = view.findViewById(R.id.list)

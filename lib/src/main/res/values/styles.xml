@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="dialogTheme" parent="@android:style/Theme.Dialog">
+    <style name="tanghy_view_cascade_dialogTheme" parent="@android:style/Theme.Dialog">
         <!-- 边框 -->
         <item name="android:windowFrame">@null</item>
         <!-- 是否浮现在activity之上 -->
@@ -18,8 +18,8 @@
         <item name="android:backgroundDimAmount">0</item>
     </style>
     <!--弹出框动画-->
-    <style name="dialog_animStyle" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/dialog_in_anim</item>
-        <item name="android:windowExitAnimation">@anim/dialog_out_anim</item>
+    <style name="tanghy_view_cascade_dialog_animStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/tanghy_view_cascade_dialog_in_anim</item>
+        <item name="android:windowExitAnimation">@anim/tanghy_view_cascade_dialog_out_anim</item>
     </style>
 </resources>

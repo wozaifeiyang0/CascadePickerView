@@ -5,14 +5,20 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21794871794871795" />
         <entry key="app/src/main/res/layout/item_card_layout.xml" value="0.4125" />
+        <entry key="lib/src/main/res/drawable/ic_baseline_check_24.xml" value="0.3045" />
         <entry key="lib/src/main/res/drawable/ripple_water.xml" value="0.1295" />
         <entry key="lib/src/main/res/drawable/shape_corners.xml" value="0.2870315551757812" />
+        <entry key="lib/src/main/res/drawable/tanghy_view_cascade_check_24.xml" value="0.3045" />
+        <entry key="lib/src/main/res/drawable/tanghy_view_cascade_ripple_water.xml" value="0.3045" />
+        <entry key="lib/src/main/res/drawable/tanghy_view_cascade_shape_corners.xml" value="0.3045" />
         <entry key="lib/src/main/res/layout/cascade_list_layout.xml" value="0.20742753623188406" />
         <entry key="lib/src/main/res/layout/dialog_content_layout.xml" value="0.25905797101449274" />
         <entry key="lib/src/main/res/layout/dialog_layout.xml" value="0.1" />
         <entry key="lib/src/main/res/layout/fragment_base.xml" value="0.20742753623188406" />
         <entry key="lib/src/main/res/layout/item_card_layout.xml" value="0.20742753623188406" />
-        <entry key="lib/src/main/res/layout/item_layout.xml" value="0.4017210144927536" />
+        <entry key="lib/src/main/res/layout/item_layout.xml" value="0.1" />
+        <entry key="lib/src/main/res/layout/tanghy_view_cascade_dialog_content_layout.xml" value="0.31927083333333334" />
+        <entry key="lib/src/main/res/layout/tanghy_view_cascade_dialog_layout.xml" value="0.31927083333333334" />
       </map>
     </option>
   </component>

@@ -26,7 +26,7 @@ class ItemAdapter(var dataSet: MutableList<Item>, private val callback: (Item) -
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.tanghy_view_cascade_item_layout, parent, false)
         return ItemHolder(ItemView(view))
     }
 

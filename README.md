@@ -5,7 +5,7 @@
 
 ## 引用方式
 ```groovy
-    implementation 'space.tanghy:cascade:0.0.3'
+    implementation 'space.tanghy:cascade:0.0.4'
 ```
 
 ## 基础级联组件 CascadePickerView

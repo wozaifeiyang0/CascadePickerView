@@ -19,7 +19,7 @@ import space.tanghy.cascade.lib.utils.ScreenUtil
  * @date: 2022/3/22 9:00 上午
  * @author: tanghy
  */
-open class CascadePickerView(context: Context) : Dialog(context, R.style.dialogTheme) {
+open class CascadePickerView(context: Context) : Dialog(context, R.style.tanghy_view_cascade_dialogTheme) {
 
     private var tabLayout: TabLayout? = null
     private var viewPager: ViewPager2? = null
@@ -48,11 +48,11 @@ open class CascadePickerView(context: Context) : Dialog(context, R.style.dialogT
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // 设置布局文件
-        setContentView(R.layout.dialog_layout)
+        setContentView(R.layout.tanghy_view_cascade_dialog_layout)
         // 设置底部显示
         window?.setGravity(Gravity.BOTTOM)
         // 设置动画
-        window?.setWindowAnimations(R.style.dialog_animStyle)
+        window?.setWindowAnimations(R.style.tanghy_view_cascade_dialog_animStyle)
         // 获取屏幕高度
         val height = ScreenUtil.getHeight(context)
         // 设置对话框大小
