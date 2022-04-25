@@ -11,7 +11,7 @@ task androidSourcesJar(type: Jar) {
 
 ext {
     PUBLISH_GROUP_ID = 'space.tanghy'
-    PUBLISH_VERSION = '0.0.7'
+    PUBLISH_VERSION = '0.0.8'
 }
 
 ext["signing.keyId"] = ''
