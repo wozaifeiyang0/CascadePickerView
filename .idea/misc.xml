@@ -18,7 +18,8 @@
         <entry key="lib/src/main/res/layout/item_card_layout.xml" value="0.20742753623188406" />
         <entry key="lib/src/main/res/layout/item_layout.xml" value="0.1" />
         <entry key="lib/src/main/res/layout/tanghy_view_cascade_dialog_content_layout.xml" value="0.31927083333333334" />
-        <entry key="lib/src/main/res/layout/tanghy_view_cascade_dialog_layout.xml" value="0.31927083333333334" />
+        <entry key="lib/src/main/res/layout/tanghy_view_cascade_dialog_layout.xml" value="0.1" />
+        <entry key="lib/src/main/res/layout/tanghy_view_cascade_item_layout.xml" value="0.25181159420289856" />
       </map>
     </option>
   </component>

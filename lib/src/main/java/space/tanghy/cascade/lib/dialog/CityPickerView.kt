@@ -12,17 +12,22 @@ import java.nio.charset.Charset
  * @date: 2022/3/23 7:22 下午
  * @author: tanghy
  */
-class CityPickerView(context: Context):CascadePickerView(context) {
+class CityPickerView(context: Context, val jsonFile:String = "province"):CascadePickerView(context) {
 
     init {
-        setSearchChildren{
-            parseJsonFile(it.value.toString())
-        }
-        setData(parseJsonFile("province"))
+        initData()
     }
 
     constructor(context: Context, level: Int) : this(context){
+        initData()
         setLevel(level)
+    }
+
+    private fun initData() {
+        setSearchChildren{
+            parseJsonFile(it.value.toString())
+        }
+        setData(parseJsonFile(jsonFile))
     }
 
 

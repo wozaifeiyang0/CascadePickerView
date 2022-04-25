@@ -9,6 +9,9 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/auto_tab_layout"
         app:tabMode="scrollable"
+        app:tabTextColor="@color/tanghy_view_cascade_normal"
+        app:tabSelectedTextColor="@color/tanghy_view_cascade_select"
+        app:tabIndicatorColor="@color/tanghy_view_cascade_select"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
